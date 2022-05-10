@@ -26,7 +26,7 @@ def home():
 def sign_up():
     username_receive = request.form['username_give']
     password_receive = request.form['password_give']
-    nickname_receive = request.form['nickname_receive']
+    nickname_receive = request.form['nickname_give']
 
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     doc = {
@@ -44,11 +44,11 @@ def check_dup():
     exists = bool(db.users.find_one({"username": username_receive}))
     return jsonify({'result':'success' , 'exists': exists})
 
-@app.route('/sign_up/check_dup_nick')
+@app.route('/sign_up/check_dup_nick', methods=['POST'])
 def check_dup_nick():
     nickname_receive = request.form['nickname_give']
-    exsist = bool(db.users.find_one({'nickname': nickname_receive}))
-    return jsonify({'result':'success' , 'exsist':exsist})
+    exists = bool(db.users.find_one({'nickname': nickname_receive}))
+    return jsonify({'result':'success' ,'exists' : exists})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
