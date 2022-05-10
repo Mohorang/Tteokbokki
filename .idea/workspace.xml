@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe78d1be-032e-4c6c-ba11-ebbbeeb56818" name="변경" comment="" />
+    <list default="true" id="fe78d1be-032e-4c6c-ba11-ebbbeeb56818" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/SignUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SignUp.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +30,9 @@
       </map>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -43,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/dlwns/Documents/mini_shar",
+    "last_opened_file_path": "C:/Users/dlwns/Desktop/Sparta/LoginPractice",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -54,6 +61,9 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.app (1)">
+    <configuration name="SignUp.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Tteokbokki/templates/SignUp.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MiniProject(1week)" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,6 +108,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MiniProject(1week)" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MiniProject(1week)" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,6 +155,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app (1)" />
+        <item itemvalue="JavaScript 디버그.SignUp.html" />
+        <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.app" />
       </list>
@@ -140,6 +174,9 @@
       <workItem from="1652074260711" duration="24631000" />
       <workItem from="1652108043195" duration="1328000" />
       <workItem from="1652140404126" duration="1324000" />
+      <workItem from="1652146112544" duration="7420000" />
+      <workItem from="1652172077687" duration="27000" />
+      <workItem from="1652172276917" duration="8000" />
     </task>
     <servers />
   </component>
@@ -149,6 +186,8 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MiniProject_1week_$app.coverage" NAME="app 커버리지 결과" MODIFIED="1652108501324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/Tteokbokki" />
     <SUITE FILE_PATH="coverage/MiniProject_1week_$app__1_.coverage" NAME="app (1) 커버리지 결과" MODIFIED="1652140551639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tteokbokki$test__1_.coverage" NAME="test (1) 커버리지 결과" MODIFIED="1652147768694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/Tteokbokki$app__1_.coverage" NAME="app (1) 커버리지 결과" MODIFIED="1652154975652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MiniProject_1week_$test.coverage" NAME="test 커버리지 결과" MODIFIED="1652109196280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
