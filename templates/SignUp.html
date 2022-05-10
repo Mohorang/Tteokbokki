@@ -23,6 +23,11 @@
             font-family: 'Nanum Myeongjo', serif;
         }
 
+        body {
+            background-color: RGBA(232, 52, 78, 0.2);
+            min-height: 100vh;
+        }
+
         .title {
             font-weight: 600;
             font-size: 5rem;
@@ -36,6 +41,7 @@
         let nicknamecheck = ""
 
         console.log(usernamecheck)
+
         /*20220510 닉네임이 비어있는데 회원가입이 가능한 문제 발생*/
 
         function sign_up() {
@@ -142,8 +148,8 @@
             if (nickname == "") {
                 $('#help-nickname').text("닉네임을 입력해주세요").removeClas("is-safe").addClass("is-danger")
                 $('#input-nickname').focus()
-                if($('#help-nickname'))
-                return;
+                if ($('#help-nickname'))
+                    return;
             }
             $.ajax({
                 type: "POST",
@@ -165,15 +171,16 @@
                 }
             });
         }
-        function sign_in(){
+
+        function sign_in() {
             let username = $('#input-username').val()
             let password = $('#input-password').val()
 
-            if(username ==""){
+            if (username == "") {
                 $('#help-id-login').text("아이디를 입력해주세요.")
                 $('#input-username').focus()
                 return;
-            } else{
+            } else {
                 $("#help-id-login").text("")
             }
             if (password == "") {
@@ -191,19 +198,20 @@
                     password_give: password
                 },
                 success: function (response) {
-                    if(response['result'] == 'success'){
+                    if (response['result'] == 'success') {
                         //아직 잘 모르겠는 쿠키부분
                         $.cookie('mytoken', response['token'], {path: '/'});
                         alert('로그인 완료!')
                         /*이 밑에다가 로그인 후 들어갈 메인페이지가 필요!*/
                         window.location.href = '/mainpage'
-                    } else{
+                    } else {
                         /*로그인 실패 --> 경고 메세지 출력*/
                         alert(response['msg'])
                     }
                 }
             })
         }
+
         function check_dup() {
             let username = $('#input-username').val()
             console.log(username)
@@ -218,7 +226,7 @@
             /*만약 아이디가 조건에 부합하지 않는다면*/
             if (!is_nickname(username)) {
                 $("#help-id").text("아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 8-20자 길이").removeClass("is-safe").addClass("is-danger")
-                    $("#input-username").focus()
+                $("#input-username").focus()
                 return;
             }
             $("#help-id").addClass("is-loading")
@@ -253,6 +261,8 @@
             <article class="media">
                 <div class="media-content">
                     <div class="content">
+                        <div class="upper-sign-up has-text-centered">
+                        </div>
                         <div class="field has-addons">
                             <div class="control has-icons-left" style="width:100%">
                                 <input id="input-username" class="input" type="text" placeholder="아이디">
