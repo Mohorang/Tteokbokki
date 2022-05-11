@@ -27,7 +27,7 @@ def home():
 
 @app.route('/mainpage')
 def home2():
-    return render_template('mainpage.html')
+    return render_template('index.html')
 
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
