@@ -29,6 +29,10 @@ def home():
 def home2():
     return render_template('index.html')
 
+@app.route('/review-save')
+def save_review():
+    return render_template('review-save.html')
+
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
     username_receive = request.form['username_give']
@@ -45,7 +49,6 @@ def sign_up():
     return jsonify({'result': 'success'})
 
     # ID의 중복확인
-
 
 @app.route('/sign_up/check_dup', methods=['POST'])
 def check_dup():
@@ -80,7 +83,7 @@ def sign_in():
             # 24시간 유지되는 토큰을 표현
             'exp': datetime.utcnow() + timedelta(seconds= 60*60*24)
         }
-        token = jwt.encode(payload,SECRET_KEY,algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload,SECRET_KEY,algorithm='HS256')
 
         return jsonify({'result':'success','token': token})
         #응답이 없었을때
