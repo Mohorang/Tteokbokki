@@ -20,16 +20,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
     <!-- font 링크 -->
-    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gugi&family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap"
-          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@700&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
     <script>
         $(document).ready(function () {
             bsCustomFileInput.init()
             listing();
         });
 
-        function listing() {
-            // $('#columns').empty()
+
+            function listing() {
+                // $('#columns').empty()
             $.ajax({
                 type: "GET",
                 url: "/review-save",
@@ -59,7 +61,6 @@
                 </div>
                 <div class="content" id="review">
                     요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <div class="user-name" id="user-name"><a>@유저닉네임</a>
-
                     <br>
                     <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
                 </div>
@@ -104,36 +105,74 @@
     </script>
 
     <style>
+        *{
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
         .card {
             width: 300px;
             max-width: 100vw;
             margin: auto;
         }
 
-        .title {
-            margin: auto;
+        .is-jjin{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            margin-top: -10px;
+            font-family: 'Do Hyeon', sans-serif;
+            color: #FF0000;
+        }
+        .is-subtitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-family: 'Gaegu', cursive;
+            color: #FF0000;
+        }
+        .top-buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -10px;
+
+        }
+        .is-save {
+            height: 30px;
+            margin-right: 30px;
+            font-family: 'Gaegu', cursive;
 
         }
 
-        .subtitle {
-            margin: auto;
-        }
+        .is-logout {
 
-        .button {
-            margin-right: 100px;
+            height: 30px;
+            /*position: fixed;*/
+            /*top: 160px;*/
+            /*right: 850px;*/
+            font-family: 'Gaegu', cursive;
+        }
+        .bar{
+            background-color: #FF0000;
+            height: 10px;
         }
     </style>
 
 </head>
 <body>
-<section class="hero is-danger">
+<div class="bar">
+    <br></br>
+    </div>
+<section class="hero">
     <div class="hero-body">
-        <p class="title">
-            떡못사
+        <p class="title is-jjin">
+            떡 못 사
         </p>
-        <p class="subtitle">
+        <p class="subtitle is-subtitle">
             떡볶이 없이 못사는 사람들
         </p>
+<<<<<<< HEAD
 
         <button class="button is-white" onclick='window.location.href = "/review-savepage"'>리뷰등록</button>
         <a>
@@ -144,10 +183,24 @@
 </section>
 <div class="columns" id = "review_list">
     <!--<div class="column">
+=======
+        <div class="top-buttons">
+        <a><button class="button is-info is-outlined is-save"  onclick ='window.location.href = "/review-save"'>리뷰등록</button></a>
+        <a><button class="button is-outlined is-logout" onclick="sign_out()"href="/">로그아웃</button></a>
+        </div>
+    </div>
+</section>
+<div class="bar">
+    <br></br>
+    </div>
+    <br>
+<div class="columns" id="card-box">
+    <div class="column">
+>>>>>>> 317f16f59c5def7d5f6bf5e13c29e4b904aa9e49
         <div class="card">
             <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <figure class="image is-4by3///">
+                    <img src="static/tteokboki.png" >
                 </figure>
             </div>
             <div class="card-content">
@@ -173,7 +226,7 @@
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="static/tteokboki.png" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -197,7 +250,7 @@
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="static/tteokboki.png" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -221,7 +274,7 @@
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="static/tteokboki.png" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
