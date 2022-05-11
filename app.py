@@ -13,9 +13,7 @@ app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 SECRET_KEY = 'SPARTA'
 
 import certifi
-
 ca = certifi.where()
-
 client = MongoClient('mongodb+srv://test:sparta@cluster0.bvp5m.mongodb.net/Cluster0?retryWrites=true&w=majority',
                      tlsCAFile=ca)
 db = client.dbsparta
@@ -25,9 +23,14 @@ db = client.dbsparta
 def home():
     return render_template('SignUp.html')
 
-@app.route('/mainpage')
+@app.route('/index')
 def home2():
-    return render_template('mainpage.html')
+    return render_template('index.html')
+
+@app.route('/review')
+def home3():
+    return render_template('review-save.html')
+
 
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
@@ -80,13 +83,12 @@ def sign_in():
             # 24시간 유지되는 토큰을 표현
             'exp': datetime.utcnow() + timedelta(seconds= 60*60*24)
         }
-        token = jwt.encode(payload,SECRET_KEY,algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload,SECRET_KEY,algorithm='HS256')
 
         return jsonify({'result':'success','token': token})
         #응답이 없었을때
     else:
         return jsonify({'result': 'fail', 'msg': "아이디 또는 비밀번호가 일치하지 않습니다."})
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
