@@ -24,10 +24,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@700&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
     <script>
-            $(document).ready(function () {
+        $(document).ready(function () {
             bsCustomFileInput.init()
             listing();
         });
+
 
             function listing() {
                 // $('#columns').empty()
@@ -37,63 +38,70 @@
                 data: {},
                 success: function (response) {
                     let rows = response['save-review']
+                    console.log(response)
                     for (let i = 0; i < rows.length; i++) {
                         let store = rows[i]['store']
                         let address = rows[i]['address']
-                        let file = rows[i]['file']
+                        let file = rows[i]['file_path']
                         let comment = rows[i]['comment']
-
-                        let temp_html = ` <div class="column">
-                                            <div class="card">
-                                                <div class="card-image">
-                                                    <figure class="image is-4by3">
-                                                          <img src="../static/${file}" class="card-img-top" alt="${store}">
-                                                    </figure>
-                                                </div>
-                                                <div class="card-content">
-                                                    <div class="media">
-                                                        <div class="media-content">
-                                                            <p class="title is-4">${store}</p>
-                                                            <p class="subtitle is-6">${address}</p>
-                                                        </div>
-                                                    </div>
-                                                        <div class="content">
-                                                        ${review} <a>${user - name}</a>
-
-                                                        <br>
-                                                        <time datetime="2016-1-1">${time}</time>
-                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>`
-                        $('#card-box').append(temp_html)
-                        }
+                        console.log(store, address, file, comment)
+                        let temp_html = `<div class="column">
+                                        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="/${file}" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4" id="store">${store}</p>
+                        <p class="subtitle is-6" id="address">가게주소</p>
+                    </div>
+                </div>
+                <div class="content" id="review">
+                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <div class="user-name" id="user-name"><a>@유저닉네임</a>
+                    <br>
+                    <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>`
+                        $('#review_list').append(temp_html)
                     }
+<<<<<<< HEAD
                 })
             }
+=======
+                }
+            })
+        }
 
-            function posting() {
+>>>>>>> 89d30dae827bc59a60e95879fc7ca7ceeefb9f21
+
+        function posting() {
             let store = $('#store').val()
             let address = $('#address').val()
             let comment = $('#comment').val()
             let image = $('#image').val()
 
             $.ajax({
-            type: "POST",
-            url: "/review",
-            data: {
-            store_give: store,
-            address_give: address,
-            comment_give: comment,
-        },
-            success: function (response) {
-            alert(response["msg"])
-            window.location.reload()
+                type: "POST",
+                url: "/review",
+                data: {
+                    store_give: store,
+                    address_give: address,
+                    comment_give: comment,
+                },
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
         }
-        });
-        }
-            function sign_out() {
+
+        function sign_out() {
             $.removeCookie('mytoken', {path: '/'});
             alert('로그아웃!')
             window.location.href = "/"
@@ -169,6 +177,18 @@
         <p class="subtitle is-subtitle">
             떡볶이 없이 못사는 사람들
         </p>
+<<<<<<< HEAD
+
+        <button class="button is-white" onclick='window.location.href = "/review-savepage"'>리뷰등록</button>
+        <a>
+            <button class="button is-white" onclick="sign_out()" href="/">로그아웃</button>
+        </a>
+
+    </div>
+</section>
+<div class="columns" id = "review_list">
+    <!--<div class="column">
+=======
         <div class="top-buttons">
         <a><button class="button is-info is-outlined is-save"  onclick ='window.location.href = "/review-save"'>리뷰등록</button></a>
         <a><button class="button is-outlined is-logout" onclick="sign_out()"href="/">로그아웃</button></a>
@@ -180,7 +200,12 @@
     </div>
     <br>
 <div class="columns" id="card-box">
+<<<<<<< HEAD
     <div class="column ">
+=======
+    <div class="column">
+>>>>>>> 317f16f59c5def7d5f6bf5e13c29e4b904aa9e49
+>>>>>>> 89d30dae827bc59a60e95879fc7ca7ceeefb9f21
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3///">
@@ -196,16 +221,22 @@
                 </div>
 
                 <div class="content" id="review">
-                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <div class="user-name" id="user-name"><a>@유저닉네임</a>
+                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다.
+                    <div class="user-name" id="user-name"><a>@유저닉네임</a>
 
-                    <br>
-                    <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
+                        <br>
+                        <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
         </div>
     <div class="column ">
+=======
+    <div class="column">
+>>>>>>> 89d30dae827bc59a60e95879fc7ca7ceeefb9f21
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -276,8 +307,12 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 
+=======
+    </div>-->
+>>>>>>> 89d30dae827bc59a60e95879fc7ca7ceeefb9f21
 </div>
 
 </div>
