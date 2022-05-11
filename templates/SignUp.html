@@ -71,8 +71,6 @@
         let usernamecheck = ""
         let nicknamecheck = ""
 
-        console.log(usernamecheck)
-
         /*20220510 닉네임이 비어있는데 회원가입이 가능한 문제 발생*/
 
         function sign_up() {
@@ -81,7 +79,6 @@
             let password2 = $('#input-password2').val()
             let nickname = $('#input-nickname').val()
 
-            console.log(username, password, password2, nickname)
 
             /*강의자료 내용대료라면 중복체크 후 아이디랑 닉네임 입력란을 수정하면 회원가입이 불가능하게끔
             * 내용을 추가*/
@@ -245,7 +242,6 @@
 
         function check_dup() {
             let username = $('#input-username').val()
-            console.log(username)
 
             /*유저아이디가 공백인 경우*/
             if (username == "") {

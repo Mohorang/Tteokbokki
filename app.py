@@ -25,7 +25,7 @@ def home():
 
 @app.route('/mainpage')
 def home2():
-    return render_template('index.html')
+        return render_template('index.html')
 
 @app.route('/review-savepage')
 def home3():
@@ -55,26 +55,36 @@ def save_review():
 
         file = request.files["file_give"]
         filename = secure_filename(file.filename)
-        print(filename)
+
+        dbnickname = db.users.find_one({'username':payload["id"]},{'nickname':1,'_id':0})
+        nickname = dbnickname['nickname']
+        print(nickname)
         # 확장자 저장 리스트의 마지막에 접근
         extension = filename.split(".")[-1]
-        print(extension)
-        # 파일 경로 저장
+
+        # 파일 경로 저장(왜 f가붙지 앞에?)
         file_path = f"static/{filename}"
-        print(file_path)
+
+        time = datetime.now()
+        temp = {'date': time.strftime(('%Y년 %m월 %d일 %H시'))}
+        savedate = temp['date']
+
         file.save(file_path)
         doc ={
             "address": address,
             "store": store,
             "comment": comment,
             "file_path": file_path,
-            "file_name": filename
+            "file_name": filename,
+            "savedate": savedate,
+            "nickname":nickname
         }
         db.review.insert_one(doc)
 
         return jsonify({'msg':'성공햇습니다.'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("/"))
+
 @app.route('/review-save',methods=['GET'])
 def get_data():
     data = list(db.review.find({},{'_id':False}))
@@ -130,7 +140,7 @@ def sign_in():
             # 24시간 유지되는 토큰을 표현
             'exp': datetime.utcnow() + timedelta(seconds= 60*60*24)
         }
-        token = jwt.encode(payload,SECRET_KEY,algorithm='HS256')
+        token = jwt.encode(payload,SECRET_KEY,algorithm='HS256').decode('utf-8')
 
         return jsonify({'result':'success','token': token})
         #응답이 없었을때
