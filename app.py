@@ -81,7 +81,7 @@ def save_review():
         }
         db.review.insert_one(doc)
 
-        return jsonify({'msg':'성공햇습니다.'})
+        return jsonify({'msg':'성공했습니다.'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("/"))
 
