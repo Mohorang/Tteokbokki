@@ -26,11 +26,14 @@ def home():
 @app.route('/index')
 def home2():
     return render_template('index.html')
+<<<<<<< HEAD
 
 @app.route('/review')
 def home3():
     return render_template('review-save.html')
 
+=======
+>>>>>>> 8699a6258eb796651c2f0cb0b7f05096e99eca33
 
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
