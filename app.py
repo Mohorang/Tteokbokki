@@ -27,9 +27,58 @@ def home():
 def home2():
     return render_template('index.html')
 
-@app.route('/review-save')
-def save_review():
+@app.route('/review-savepage')
+def home3():
     return render_template('review-save.html')
+
+@app.route('/review',methods=['POST'])
+def save_review():
+    # 토큰을 가지고 있는 유저만 작성할 수 있게한다.
+    token_receive = request.cookies.get('mytoken')
+
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        # 리뷰하기 버튼 눌렀을 때 정보를 mongoDB클라우드에 저장한다.
+        # 단 사진은 경로만 저장
+
+        #form_data.append("file_give", file)
+        #form_data.append("comment_give", comment)
+        #form_data.append("store_give", store)
+        #form_data.append("address_give", address)
+
+        # payload에는 뭐가 들어있지?
+        #유저 id 저장
+        username = db.users.find_one({'username':payload["id"]})
+        address = request.form['address_give']
+        store = request.form['store_give']
+        comment = request.form['comment_give']
+
+        file = request.files["file_give"]
+        filename = secure_filename(file.filename)
+        print(filename)
+        # 확장자 저장 리스트의 마지막에 접근
+        extension = filename.split(".")[-1]
+        print(extension)
+        # 파일 경로 저장
+        file_path = f"static/{filename}"
+        print(file_path)
+        file.save(file_path)
+        doc ={
+            "address": address,
+            "store": store,
+            "comment": comment,
+            "file_path": file_path,
+            "file_name": filename
+        }
+        db.review.insert_one(doc)
+
+        return jsonify({'msg':'성공햇습니다.'})
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("/"))
+@app.route('/review-save',methods=['GET'])
+def get_data():
+    data = list(db.review.find({},{'_id':False}))
+    return jsonify({'save-review': data})
 
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
