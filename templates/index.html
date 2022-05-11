@@ -31,7 +31,6 @@
 
             function listing() {
                 // $('#columns').empty()
-            }
             $.ajax({
                 type: "GET",
                 url: "/review-save",
@@ -59,7 +58,7 @@
                                                         </div>
                                                     </div>
                                                         <div class="content">
-                                                        ${review} <a>${user-name}</a>
+                                                        ${review} <a>${user - name}</a>
 
                                                         <br>
                                                         <time datetime="2016-1-1">${time}</time>
@@ -68,7 +67,8 @@
                                                 </div>
                                             </div>
                                         </div>`
-                                    $('#columns').append(temp_html)
+                        $('#card-box').append(temp_html)
+                        }
                     }
                 }
             })
@@ -180,7 +180,7 @@
     <br></br>
     </div>
     <br>
-<div class="columns">
+<div class="columns" id="card-box">
     <div class="column">
         <div class="card">
             <div class="card-image">
