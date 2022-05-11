@@ -1,160 +1,170 @@
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <title>떡못사</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>떡못사</title>
 
-            <!-- Bulma CSS 링크 -->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-             <!-- 부트스트랩 CSS 링크 -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-                  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-                  crossorigin="anonymous">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                    crossorigin="anonymous"></script>
-            <!-- Jquery 링크 -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-            <!-- font 링크 -->
-            <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gugi&family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap"
-                  rel="stylesheet">
-            <style>
-            .card {
-                width: 300px;
-                max-width: 100vw;
-                margin: auto;
-            }
-            .title{
-                margin: auto;
+    <!-- Bulma CSS 링크 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- 부트스트랩 CSS 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <!-- Jquery 링크 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <!-- font 링크 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gugi&family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap"
+          rel="stylesheet">
+    <style>
+        .card {
+            width: 300px;
+            max-width: 100vw;
+            margin: auto;
+        }
 
-            }
-            .subtitle{
-                margin: auto;
-            }
-            .button{
-                margin-right: 100px;
-            }
-            </style>
+        .title {
+            margin: auto;
 
-        </head>
-        <body>
-        <section class="hero is-danger">
-            <div class="hero-body">
-                <p class="title">
-                    떡못사
-                </p>
-                <p class="subtitle">
-                    떡볶이 없이 못사는 사람들
-                </p>
-                <button type="button-save" class="btn btn-light">등록하기</button>
-                <button type="button-logout" class="btn btn-light">로그아웃</button>
+        }
+
+        .subtitle {
+            margin: auto;
+        }
+
+        .button {
+            margin-right: 100px;
+        }
+    </style>
+
+    <script>
+        function logout(){
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/"
+        }
+    </script>
+</head>
+<body>
+<section class="hero is-danger">
+    <div class="hero-body">
+        <p class="title">
+            떡못사
+        </p>
+        <p class="subtitle">
+            떡볶이 없이 못사는 사람들
+        </p>
+        <button type="button-save" class="btn btn-light">등록하기</button>
+        <button type="button-logout" class="btn btn-light" onclick = "logout()">로그아웃</button>
+    </div>
+</section>
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
             </div>
-        </section>
-        <div class="columns">
-            <div class="column">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-4">가게이름</p>
-                                <p class="subtitle is-6">가게주소</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
-
-                            <br>
-                            <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
-                        </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">가게이름</p>
+                        <p class="subtitle is-6">가게주소</p>
                     </div>
                 </div>
-            </div>
-            <div class="column">
-                                 <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-4">가게이름</p>
-                                <p class="subtitle is-6">가게주소</p>
-                            </div>
-                        </div>
 
-                        <div class="content">
-                            요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
+                <div class="content">
+                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
 
-                            <br>
-                            <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                                  <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-4">가게이름</p>
-                                <p class="subtitle is-6">가게주소</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
-
-                            <br>
-                            <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                                  <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-4">가게이름</p>
-                                <p class="subtitle is-6">가게주소</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
-
-                            <br>
-                            <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
-                        </div>
-                    </div>
+                    <br>
+                    <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">가게이름</p>
+                        <p class="subtitle is-6">가게주소</p>
+                    </div>
+                </div>
 
+                <div class="content">
+                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
+
+                    <br>
+                    <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">가게이름</p>
+                        <p class="subtitle is-6">가게주소</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
+
+                    <br>
+                    <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">가게이름</p>
+                        <p class="subtitle is-6">가게주소</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    요즘 내 마음속 떡볶이 랭킹 1위는 할머니가래떡떡볶이다. <a>@유저닉네임</a>
+
+                    <br>
+                    <time datetime="2016-1-1">2022년 5월 10일 오후 6시</time>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 
 
-        </body>
-        </html>
+</body>
+</html>

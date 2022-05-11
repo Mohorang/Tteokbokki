@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fe78d1be-032e-4c6c-ba11-ebbbeeb56818" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/SignUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SignUp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +55,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dlwns\Desktop\Tteokbokki\templates" />
       <recent name="C:\Users\dlwns\Desktop\Sparta\MiniProject(1week)\static\profile_pics" />
       <recent name="C:\Users\dlwns\Desktop\Sparta\MiniProject(1week)\static" />
     </key>
@@ -179,7 +179,12 @@
       <workItem from="1652172276917" duration="8000" />
       <workItem from="1652180131251" duration="257000" />
       <workItem from="1652180444918" duration="104000" />
-      <workItem from="1652180586330" duration="9493000" />
+      <workItem from="1652180586330" duration="9629000" />
+      <workItem from="1652190318134" duration="186000" />
+      <workItem from="1652190507325" duration="3589000" />
+      <workItem from="1652227238889" duration="2385000" />
+      <workItem from="1652231446829" duration="260000" />
+      <workItem from="1652232057506" duration="4456000" />
     </task>
     <servers />
   </component>
@@ -202,7 +207,7 @@
     <SUITE FILE_PATH="coverage/MiniProject_1week_$app__1_.coverage" NAME="app (1) 커버리지 결과" MODIFIED="1652140551639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tteokbokki$test__1_.coverage" NAME="test (1) 커버리지 결과" MODIFIED="1652147768694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/Tteokbokki$test__2_.coverage" NAME="test (2) 커버리지 결과" MODIFIED="1652187286665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Sparta/MiniProject(1week)" />
-    <SUITE FILE_PATH="coverage/Tteokbokki$app__1_.coverage" NAME="app (1) 커버리지 결과" MODIFIED="1652188714490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tteokbokki$app__1_.coverage" NAME="app (1) 커버리지 결과" MODIFIED="1652228848858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MiniProject_1week_$test.coverage" NAME="test 커버리지 결과" MODIFIED="1652109196280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
