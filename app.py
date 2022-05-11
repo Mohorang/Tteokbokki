@@ -23,17 +23,9 @@ db = client.dbsparta
 def home():
     return render_template('SignUp.html')
 
-@app.route('/index')
+@app.route('/mainpage')
 def home2():
     return render_template('index.html')
-<<<<<<< HEAD
-
-@app.route('/review')
-def home3():
-    return render_template('review-save.html')
-
-=======
->>>>>>> 8699a6258eb796651c2f0cb0b7f05096e99eca33
 
 @app.route('/review-save')
 def save_review():
