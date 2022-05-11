@@ -14,41 +14,39 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+       <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@700&family=Gothic+A1:wght@200&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
+          rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-
-
-    <title>떡볶이집 등록하기</title>
+    <title>떡 못 사|맛집등록</title>
 
     <style>
         * {
-            font-family: 'Nanum Gothic', sans-serif;
-            color: #FF0000;
+            font-family: 'Poor Story', cursive;
         }
+
 
         body {
             background-color: white;
             text-align: center;
             min-height: 130vh;
-            font-family: 'Nanum Gothic Coding', monospace;
 
         }
-
         .main-box {
             max-width: 600px;
             margin: 10px auto 20px;
         }
-
         .title {
-            font-family: 'Nanum Myeongjo', serif;
+            font-family: 'Do Hyeon', sans-serif;
             margin-top: 60px;
-            color: #FF0000;
-            font-size: 4rem;
+            color: #f32645;
+            font-size: 5rem;
         }
 
         .mini-title {
-            ffont-family: 'Nanum Gothic Coding', monospace;
-            font-size: 1rem;
+            font-size: 1.5rem;
             margin-top: -19px
         }
 
@@ -80,44 +78,43 @@
             padding: 0px 10px 0px 10px;
         }
 
-        .is-choose {
-            color: white !important;
-            background-color:#FF0000 !important;
-            border-radius: 19px;
-        }
-
         .is-complete {
-            background-color: #FF0000 !important;
+            background-color: #f32645 !important;
             border-radius: 19px;
-            margin-top: 10px;
+            /*margin-top: 10px;*/
+            transform: translate(-60%, 25%);
         }
 
         .is-buton.is-remain {
-            color: #FF0000!important;
+            color: #f32645!important;
             background-color: white !important;
-            border-color: #FF0000 !important;
-            left: 47%;
-            transform: translate(-50%, 30%);
+            border-color: #f32645 !important;
+            /*left: 39%;*/
+            transform: translate(60%, 1500%);
             text-decoration-line: none;
             border-radius: 19px;
         }
+
 
     </style>
     <script>
         function save_review() {
             let store = $('#store').val()
+            let menu = $('#menu').val()
+            let localname = $('#localname').val()
+            let star = $('#star').val()
             let comment = $('#comment').val()
             let address = $('#address').val()
             let file = $('#file')[0].files[0]
-
             let form_data = new FormData()
-
-            console.log(store,comment,address,file)
 
             form_data.append("file_give", file)
             form_data.append("comment_give", comment)
+            form_data.append("star_give", star)
             form_data.append("store_give", store)
+            form_data.append("localname_give", localname)
             form_data.append("address_give", address)
+            form_data.append("menu_give", menu)
 
             $.ajax({
                 type: "POST",
@@ -127,8 +124,8 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    alert(response['msg'])
-                    window.location.href="/mainpage"
+                    alert(response["msg"])
+                    window.location.href="/index"
                 }
             });
         }
@@ -136,10 +133,10 @@
 </head>
 <body>
 <a class="button is-primary is-buton is-remain"
-   onclick="window.location.href='/mainpage'"> 목록으로 가기
+   onclick="window.location.href='/'"> 목록으로 가기
 </a>
 <section class="main-box">
-    <h1 class="title">떡못사</h1>
+    <h1 class="title">떡 못 사</h1>
     <h1 class="mini-title">떡볶이 없이 못사는 사람들</h1>
     <div class="wrap">
         <div class="form-floating mb-3">
