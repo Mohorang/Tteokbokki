@@ -106,21 +106,16 @@
     <script>
         function save_review() {
             let store = $('#store').val()
-            let menu = $('#menu').val()
-            let localname = $('#localname').val()
-            let star = $('#star').val()
             let comment = $('#comment').val()
             let address = $('#address').val()
             let file = $('#file')[0].files[0]
+
             let form_data = new FormData()
 
             form_data.append("file_give", file)
             form_data.append("comment_give", comment)
-            form_data.append("star_give", star)
             form_data.append("store_give", store)
-            form_data.append("localname_give", localname)
             form_data.append("address_give", address)
-            form_data.append("menu_give", menu)
 
             $.ajax({
                 type: "POST",
