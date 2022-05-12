@@ -28,18 +28,17 @@ def home2(username):
     # 각 사용자의 프로필과 글을 모아볼 수 있는 공간
     token_receive = request.cookies.get('mytoken')
     try:
-        print('success')
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         status = (username == payload["id"])  # 내 프로필이면 True, 다른 사람 프로필 페이지면 False
 
         user_info = db.users.find_one({"username": username}, {"_id": False})
         name = user_info['nickname']
 
-        print('success1')
+
         return render_template('index.html', user_info=name, status=status)
 
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
-        print('fail1')
+
         return render_template('index.html')
 
 @app.route('/review-savepage')
@@ -198,7 +197,9 @@ def delete_post():
         dbnickname = db.users.find_one({'username': payload["id"]}, {'nickname': 1, '_id': 0})
         nickname = dbnickname['nickname']
 
-        db.review.delete_one({'nickname': nickname} and {'numofpost': int(postnum_receive)})
+        db.review.delete_one({'$and': [{'nickname': nickname}, {'numofpost': int(postnum_receive)}]})
+        # 아래 문법이 잘못된 거 였어서 삭제햇을때 이상한 포스팅이 삭제되었다. 위가 올바른 문법
+        # db.review.delete_one({'nickname': nickname} and {'numofpost': int(postnum_receive)})
         # db.review.delete_one({'nickname':nickname,'numofpost':postnum_receive})
 
         totalpostnum = totalpostnum - 1
