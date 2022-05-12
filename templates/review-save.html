@@ -125,7 +125,7 @@
                 processData: false,
                 success: function (response) {
                     alert(response['msg'])
-                    window.location.href= '/mainpage'
+                    window.location.href= '/mainpage/' + response['username']
                 }
             });
         }
@@ -133,7 +133,7 @@
 </head>
 <body>
 <a class="button is-primary is-buton is-remain"
-   onclick="window.location.href='/'"> 목록으로 가기
+   onclick="history.back()"> 목록으로 가기
 </a>
 <section class="main-box">
     <h1 class="title">떡 못 사</h1>

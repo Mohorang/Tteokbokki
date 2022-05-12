@@ -105,7 +105,7 @@ def save_review():
         }
         db.review.insert_one(doc)
 
-        return jsonify({'msg':'성공했습니다.'})
+        return jsonify({'msg':'성공했습니다.','username':payload['id']})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("/"))
 
@@ -204,13 +204,15 @@ def delete_post():
         #포스트 넘버 를 바꿔주는 위치의 잘못?
         doc = list(db.review.find({'nickname': nickname}, {'numofpost': 1, '_id': False}))
 
+        # 결론적으로 db 의 update나 delete문법안에 조건식을 넣는다던지 다룰줄 몰라서 포스트 번호 업데이트하는데 시간을 써버렷다.
         for i in range(totalpostnum):
             if doc[i]['numofpost'] > int(postnum_receive):
-                num = (doc[i]['numofpost']-1)
+                num = (doc[i]['numofpost'])
                 print(num)
-                db.review.update_one({'nickname': nickname}, {'$set': {'numofpost': int(num)}})
-                print(doc[i]['numofpost'])
+                db.review.update_one({'nickname': nickname} and {'numofpost':num}, {'$set': {'numofpost': num-1}})
 
+        doc = list(db.review.find({'nickname': nickname}, {'numofpost': 1, '_id': False}))
+        print(doc)
         return jsonify({'result':'success'})
 
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
