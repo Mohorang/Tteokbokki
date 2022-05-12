@@ -24,150 +24,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@700&family=Gothic+A1:wght@200&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
           rel="stylesheet">
-    <script>
-        $(document).ready(function () {
-            bsCustomFileInput.init()
-            listing();
-        });
-
-        function delete_post(clicked_id) {
-            console.log(clicked_id)
-            let postnumber = clicked_id;
-
-            $.ajax({
-                type: "POST",
-                url: "/delete_post",
-                data: {
-                    postnum_give: postnumber
-                },
-                success: function (response) {
-                    if(response['result'] == 'success'){
-                        window.location.reload()
-                    }
-                }
-            });
-        }
-        function listing() {
-            // $('#columns').empty()
-            let bool;
-            let count=0;
-            $.ajax({
-                type: "GET",
-                url: "/review-save",
-                data: {},
-                success: function (response) {
-                    let rows = response['save-review']
-                    for (let i = 0; i < rows.length; i++) {
-                        /*가게이름*/
-                        let store = rows[i]['store']
-                        /*가게주소*/
-                        let address = rows[i]['address']
-                        /*업로드한 사진*/
-                        let file = rows[i]['file_path']
-                        /*코멘트*/
-                        let comment = rows[i]['comment']
-                        let savedate = rows[i]['savedate']
-                        let nickname = rows[i]['nickname']
-                        {#jinja2 이용해서 삭제버튼 유무를 정햇다.#}
-                        if (nickname != '{{ user_info }}') {
-                            {#권한 없음#}
-                            bool = false
-                        } else {
-                            {#권한 있음#}
-                            bool = true
-                        }
-                        let temp_html = ``;
-                        if (bool) {
-                            count++;
-                            temp_html = `<div class="column">
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3///">
-                    <img src="${file}">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content">
-                        <p class="title is-4" id="store">${store}</p>
-                        <p class="subtitle is-6" id="address">${address}</p>
-                    </div>
-                </div>
-
-                <div class="content" id="review">
-                    ${comment}
-                    <div class="user-name" id="user-name"><a>${nickname}님!</a>
-                        <br>
-                        <time datetime="2016-1-1">${savedate}</time>
-                    </div>
-<button id = ${count}  onclick = "delete_post(this.id)">삭제</button>
-                </div>
-            </div>
-        </div>
-    </div>`
-                        } else {
-                            temp_html = `<div class="column">
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3///">
-                    <img src="${file}">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content">
-                        <p class="title is-4" id="store">${store}</p>
-                        <p class="subtitle is-6" id="address">${address}</p>
-                    </div>
-                </div>
-
-                <div class="content" id="review">
-                    ${comment}
-                    <div class="user-name" id="user-name"><a>${nickname}님!</a>
-                        <br>
-                        <time datetime="2016-1-1">${savedate}</time>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>`
-                        }
-                        $('#card-box').append(temp_html)
-
-                    }
-                }
-            })
-        }
-
-        function posting() {
-            let store = $('#store').val()
-            let address = $('#address').val()
-            let comment = $('#comment').val()
-            let image = $('#image').val()
-
-            $.ajax({
-                type: "POST",
-                url: "/review",
-                data: {
-                    store_give: store,
-                    address_give: address,
-                    comment_give: comment,
-                },
-                success: function (response) {
-                    alert(response["msg"])
-                    window.location.reload()
-                }
-            });
-        }
-
-        function sign_out() {
-            $.removeCookie('mytoken', {path: '/'});
-            alert('로그아웃!')
-            window.location.href = "/"
-        }
-
-    </script>
 
     <style>
         * {
@@ -242,6 +98,132 @@
 
         }
     </style>
+
+    <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+            listing();
+        });
+
+        function delete_post(clicked_id) {
+            console.log(clicked_id)
+            let postnumber = clicked_id;
+
+            $.ajax({
+                type: "POST",
+                url: "/delete_post",
+                data: {
+                    postnum_give: postnumber
+                },
+                success: function (response) {
+                    if(response['result'] == 'success'){
+                        window.location.reload()
+                    }
+                }
+            });
+        }
+        function listing() {
+            // $('#columns').empty()
+            let bool;
+            let count=0;
+            $.ajax({
+                type: "GET",
+                url: "/review-save",
+                data: {},
+                success: function (response) {
+                    let rows = response['save-review']
+                    for (let i = 0; i < rows.length; i++) {
+                        /*가게이름*/
+                        let store = rows[i]['store']
+                        /*가게주소*/
+                        let address = rows[i]['address']
+                        /*업로드한 사진*/
+                        let file = rows[i]['file_path']
+                        /*코멘트*/
+                        let comment = rows[i]['comment']
+                        let savedate = rows[i]['savedate']
+                        let nickname = rows[i]['nickname']
+                        {#jinja2 이용해서 삭제버튼 유무를 정햇다.#}
+                        console.log('/'+file)
+                        if (nickname != '{{ user_info }}') {
+                            {#권한 없음#}
+                            bool = false
+                        } else {
+                            {#권한 있음#}
+                            bool = true
+                        }
+                        let temp_html = ``;
+                        if (bool) {
+                            count++;
+                            temp_html = `<div class="column">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3///">
+                    <img src="/${file}">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4" id="store">${store}</p>
+                        <p class="subtitle is-6" id="address">${address}</p>
+                    </div>
+                </div>
+
+                <div class="content" id="review">
+                    ${comment}
+                    <div class="user-name" id="user-name"><a>${nickname}님!</a>
+                        <br>
+                        <time datetime="2016-1-1">${savedate}</time>
+                    </div>
+<button id = ${count}  onclick = "delete_post(this.id)">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>`
+                        } else {
+                            temp_html = `<div class="column">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3///">
+                    <img src="/${file}">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4" id="store">${store}</p>
+                        <p class="subtitle is-6" id="address">${address}</p>
+                    </div>
+                </div>
+
+                <div class="content" id="review">
+                    ${comment}
+                    <div class="user-name" id="user-name"><a>${nickname}님!</a>
+                        <br>
+                        <time datetime="2016-1-1">${savedate}</time>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>`
+                        }
+                        $('#card-box').append(temp_html)
+
+                    }
+                }
+            })
+        }
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/"
+        }
+
+    </script>
+
+
 
 </head>
 <section class="hero">
