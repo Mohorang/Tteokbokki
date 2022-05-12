@@ -8,14 +8,11 @@
 
  ## 로그인 페이지<br>
 
-
-![로그인 페이지](https://user-images.githubusercontent.com/89718426/168017204-25680598-6332-43ba-a3b2-e02e78135b10.jpg)
-
+![KakaoTalk_20220512_172123483_01](https://user-images.githubusercontent.com/89718426/168025755-040c33d3-c7cb-4f5d-9782-e06eca9ffe76.png)
 
  ## 메인 페이지<br>
 
-
-![떡못사 메인페이지](https://user-images.githubusercontent.com/89718426/168024279-558e60f5-6cd8-4350-b65e-d36619b2d97e.jpg)
+![KakaoTalk_20220512_172123483](https://user-images.githubusercontent.com/89718426/168025881-d2615edc-8dfc-4315-b69e-488fdd7b82c0.png)
 
 
 ## 프로젝트 소개<br>
