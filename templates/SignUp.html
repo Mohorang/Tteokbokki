@@ -247,7 +247,7 @@
                         $.cookie('mytoken', response['token'], {path: '/'});
                         alert('로그인 완료!')
                         /*이 밑에다가 로그인 후 들어갈 메인페이지가 필요!*/
-                        window.location.href = '/mainpage'
+                        window.location.href = '/mainpage/' + username
                     } else {
                         /*로그인 실패 --> 경고 메세지 출력*/
                         alert(response['msg'])

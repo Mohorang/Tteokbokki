@@ -23,8 +23,20 @@ db = client.dbsparta
 def home():
     return render_template('SignUp.html')
 
-@app.route('/mainpage')
-def home2():
+@app.route('/mainpage/<username>')
+def home2(username):
+    # 각 사용자의 프로필과 글을 모아볼 수 있는 공간
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        status = (username == payload["id"])  # 내 프로필이면 True, 다른 사람 프로필 페이지면 False
+
+        user_info = db.users.find_one({"username": username}, {"_id": False})
+        name = user_info['nickname']
+
+        return render_template('index.html', user_info=name, status=status)
+
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return render_template('index.html')
 
 @app.route('/review-savepage')
@@ -69,6 +81,17 @@ def save_review():
         temp = {'date': time.strftime(('%Y년 %m월 %d일 %H시'))}
         savedate = temp['date']
 
+        #포스트 개수만 받아오기
+        count = db.users.find_one({'username':payload["id"]},{'numofpost':1,'_id':0})
+
+        print(count)
+        numberofpost = count['numofpost']
+        numberofpost = numberofpost + 1
+
+        # 리뷰등록시 그 유저의 포스트 개수를 1증가
+        db.users.update_one({'username': payload["id"]}, {'$set': {'numofpost': numberofpost}})
+        print(numberofpost)
+
         file.save(file_path)
         doc ={
             "address": address,
@@ -77,7 +100,8 @@ def save_review():
             "file_path": file_path,
             "file_name": filename,
             "savedate": savedate,
-            "nickname":nickname
+            "nickname":nickname,
+            "numofpost":numberofpost
         }
         db.review.insert_one(doc)
 
@@ -96,11 +120,15 @@ def sign_up():
     password_receive = request.form['password_give']
     nickname_receive = request.form['nickname_give']
 
+    # 삭제를 위한 그 유저의 포스트 개수 추가 20220512
+    numberofpost = 0
+
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     doc = {
         "username": username_receive,  # 아이디
-        "password": password_hash,  # 비밀번호
-        "nickname": nickname_receive  # 닉네임
+        "password": password_hash,     # 비밀번호
+        "nickname": nickname_receive,  # 닉네임
+        "numofpost": numberofpost      # 포스트개수
     }
     db.users.insert_one(doc)
     return jsonify({'result': 'success'})
@@ -146,6 +174,49 @@ def sign_in():
         #응답이 없었을때
     else:
         return jsonify({'result': 'fail', 'msg': "아이디 또는 비밀번호가 일치하지 않습니다."})
+
+@app.route('/delete_post',methods=['POST'])
+def delete_post():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        postnum_receive = request.form['postnum_give']
+
+        # 토탈 포스트개수를 받아와서 -1시켜줄 예정
+        temp = db.users.find_one({'username':payload["id"]},{'numofpost':1 ,'_id':0})
+
+        totalpostnum = temp['numofpost']
+
+        print(totalpostnum,postnum_receive)
+
+        # 포스트 번호와 일치하는 포스트를 DB클라우드로부터 삭제
+        dbnickname = db.users.find_one({'username': payload["id"]}, {'nickname': 1, '_id': 0})
+        nickname = dbnickname['nickname']
+
+
+        db.review.delete_one({'nickname': nickname} and {'numofpost': int(postnum_receive)})
+        # db.review.delete_one({'nickname':nickname,'numofpost':postnum_receive})
+
+        totalpostnum = totalpostnum - 1
+        # 여기 처음써보는거라 확인할 필요 있음 그 유저의 토탈 포스트개수 -1 일단 여기 되는거 확인
+        db.users.update_one({'username':payload['id']},{'$set':{'numofpost': totalpostnum}})
+
+        #포스트 넘버 를 바꿔주는 위치의 잘못?
+        doc = list(db.review.find({'nickname': nickname}, {'numofpost': 1, '_id': False}))
+
+        for i in range(totalpostnum):
+            if doc[i]['numofpost'] > int(postnum_receive):
+                num = (doc[i]['numofpost']-1)
+                print(num)
+                db.review.update_one({'nickname': nickname}, {'$set': {'numofpost': int(num)}})
+                print(doc[i]['numofpost'])
+
+        return jsonify({'result':'success'})
+
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return render_template('index.html')
+
+    return jsonify('msg','삭제했습니다.')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
